@@ -2,6 +2,7 @@
 
 import os
 import time
+import hashlib
 
 from morituri.common import common
 from morituri.configure import configure
@@ -181,6 +182,11 @@ class WhatCDLogger(result.Logger):
             lines.append("No errors occurred")
         lines.append("")
         lines.append("End of status report")
+        lines.append("")
+
+        hasher = hashlib.sha256()
+        hasher.update("\n".join(lines).encode("utf-8"))
+        lines.append("==== Log Checksum: %s ====" % hasher.hexdigest())
         lines.append("")
 
         return lines
