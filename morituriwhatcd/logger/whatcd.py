@@ -128,6 +128,22 @@ class WhatCDLogger(result.Logger):
             "    ---------------------------------------------------------")
         table = ripResult.table
 
+        htoa = None
+        try:
+            htoa = table.tracks[0].getIndex(0)
+        except KeyError:
+            pass
+
+        if htoa and htoa.path:
+            htoastart = htoa.absolute
+            htoaend = table.getTrackEnd(0)
+            htoalength = table.tracks[0].getIndex(1).absolute - htoastart + 1
+            lines.append(
+            "       %2d  | %s | %s |    %6d    |   %6d   " % (
+                0,
+                self._framesToMSF(htoastart),
+                self._framesToMSF(htoalength),
+                htoastart, htoaend))
 
         for t in table.tracks:
             # FIXME: what happens to a track start over 60 minutes ?
@@ -147,6 +163,7 @@ class WhatCDLogger(result.Logger):
         ### per-track
         duration = 0.0
         for t in ripResult.tracks:
+            if not t.filename: continue
             lines.extend(self.trackLog(t))
             lines.append('')
             duration += t.testduration + t.copyduration
