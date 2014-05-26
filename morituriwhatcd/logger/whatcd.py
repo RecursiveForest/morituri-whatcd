@@ -58,12 +58,7 @@ class WhatCDLogger(result.Logger):
         lines.append("morituri version %s" % configure.version)
         lines.append("")
 
-        # date when EAC writes the log file
-        # using %e for day of month and strip because EAC formats like this:
-        # 4. June 2009, 16:18
-        # 6. September 2009, 9:14
-        # %-H formats the hour with one digit only when it's one digit
-        date = time.strftime("%e. %B %Y, %-H:%M", time.localtime(epoch)).strip()
+        date = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime(epoch)).strip()
         lines.append("morituri extraction logfile from %s" % date)
         lines.append("")
 
