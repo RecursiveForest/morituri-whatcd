@@ -5,11 +5,9 @@ To use this plugin:
 
 * build it:
 
-        mkdir -p /tmp/github
-        cd /tmp/github
-        git clone git://github.com/supermanvelo/morituri-whatcd.git
+        git clone git://github.com/RecursiveForest/morituri-whatcd.git
         cd morituri-whatcd
-        python setup.py bdist_egg
+        python2 setup.py bdist_egg
 
 * copy it to your plugin directory:
 
@@ -32,4 +30,4 @@ Developers
 
 To use the plugin while developing uninstalled:
 
-    python setup.py develop --install-dir=path/to/checkout/of/morituri
+    python2 setup.py develop --install-dir=path/to/checkout/of/morituri
