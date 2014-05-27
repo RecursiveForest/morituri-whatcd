@@ -96,7 +96,7 @@ class WhatCDLogger(result.Logger):
         lines.append("Delete leading and trailing silent blocks   : No")
         # Default
         lines.append("Null samples used in CRC calculations       : Yes")
-        lines.append("Gap Detection                               : "
+        lines.append("Gap detection                               : "
             "cdrdao version %s" % ripResult.cdrdaoVersion)
         lines.append("Gap handling                                : "
             "Appended to previous track")
@@ -231,10 +231,10 @@ class WhatCDLogger(result.Logger):
             lines.append('     Track quality %.1f %%' % (
                 trackResult.quality * 100.0, ))
         if trackResult.testspeed:
-            lines.append('     Extraction Speed (Test) %.4f X' % (
+            lines.append('     Extraction speed (Test) %.4f X' % (
                 trackResult.testspeed))
         if trackResult.copyspeed:
-            lines.append('     Extraction Speed (Copy) %.4f X' % (
+            lines.append('     Extraction speed (Copy) %.4f X' % (
                 trackResult.copyspeed))
         if trackResult.testcrc is not None:
             lines.append('     Test CRC %08X' % trackResult.testcrc)
